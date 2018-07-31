@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd64899605f841cb9f4e94b33b5ab095" Name="Diagram1" ZoomLevel="29">
+        <EntityTypeShape EntityType="PranomiGuncelModel.Adress" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Competent" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.CostCategory" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Costs" Width="1.5" PointX="6" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Country" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.CreditCardPay" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Currency" Width="1.5" PointX="1.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.CustomerCategory" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Customers" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Invoice" Width="1.5" PointX="13.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.InvoiceCategory" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.InvoiceLine" Width="1.5" PointX="15.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.InvoiceLineTaxes" Width="1.5" PointX="18" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Order" Width="1.5" PointX="3" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.OrderLine" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.OrderLineTaxes" Width="1.5" PointX="10.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.ProductCategory" Width="1.5" PointX="3" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Products" Width="1.5" PointX="8.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.ProductTaxes" Width="1.5" PointX="10.5" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.ProductVaryant" Width="1.5" PointX="13.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Safe" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.SafeAction" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.StateProvince" Width="1.5" PointX="8.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.SubUsers" Width="1.5" PointX="3" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Taxes" Width="1.5" PointX="15.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Users" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PranomiGuncelModel.Varyant" Width="1.5" PointX="11.25" PointY="29.375" IsExpanded="true" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Adress_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Adress_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Adress_StateProvince" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Customers_Competent" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Costs_CostCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Costs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.StateProvince_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Products_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Safe_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_CustomerCategory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Customers_CustomerCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Customers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Invoice_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Invoice_InvoiceCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Invoice_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_InvoiceLine_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_InvoiceCategory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_InvoiceLine_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_InvoiceLineTaxes_InvoiceLine" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_InvoiceLineTaxes_Taxes" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Order_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_OrderLine_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_OrderLine_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_OrderLineTaxes_OrderLine" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_OrderLineTaxes_Taxes" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_ProductCategory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Products_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_Products_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_ProductTaxes_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_ProductVaryant_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_ProductTaxes_Taxes" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_ProductVaryant_Varyant" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_SafeAction_Safe" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_SafeAction_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PranomiGuncelModel.FK_SubUsers_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

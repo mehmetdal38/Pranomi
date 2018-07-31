@@ -1,0 +1,2430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PranomiGuncelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdressLine" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="District" Type="nchar" MaxLength="100" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="CustomersID" Type="int" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Competent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurName" Type="nchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CustomersID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CostCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Costs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PriceExVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PriceInVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsPay" Type="bit" Nullable="false" />
+          <Property Name="ExpryDate" Type="datetime" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AllowsBilling" Type="bit" Nullable="false" />
+          <Property Name="AllowsShipping" Type="bit" Nullable="false" />
+          <Property Name="TwoLetterIsoCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="ThreeLetterIsoCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="NumericIsoCode" Type="int" Nullable="false" />
+          <Property Name="SubjectToVat" Type="bit" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="LimitedToStores" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCardPay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kind" Type="int" Nullable="false" />
+          <Property Name="TotalInstallment" Type="int" Nullable="false" />
+          <Property Name="CurrentInstallment" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="DocumentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Symbol" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Code" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsCompany" Type="bit" Nullable="false" />
+          <Property Name="TaxState" Type="nchar" MaxLength="100" />
+          <Property Name="TaxNumber" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IsCustomer" Type="bit" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CustomerName" Type="nchar" MaxLength="80" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="150" />
+          <Property Name="Iban" Type="nchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrencyName" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="CurrencyValue" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FileUrl" Type="nvarchar(max)" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TaxTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PayTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsPay" Type="bit" Nullable="false" />
+          <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
+          <Property Name="InvoiceKind" Type="int" Nullable="false" />
+          <Property Name="PayKind" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="categoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceLineTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxesID" Type="int" Nullable="false" />
+          <Property Name="InvoiceLineID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="CurrencyName" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="CurrencyValue" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrderNumber" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileUrl" Type="nvarchar(max)" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TaxTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderLineTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxesID" Type="int" Nullable="false" />
+          <Property Name="OrderLineID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SKU" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsVirtual" Type="bit" Nullable="false" />
+          <Property Name="Stock" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PictureUrl" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="PurPriceExVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PurPriceInVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalPriceExVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalPriceInVat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="TaxesID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Kind" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductVaryant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="VaryantID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Safe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FirsDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SafeAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ActionKind" Type="int" Nullable="false" />
+          <Property Name="KindID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LastBalance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SafeID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StateProvince">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" />
+          <Property Name="Email" Type="nchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="UsersID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Taxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" />
+          <Property Name="SubUserCount" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDemo" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Varyant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Adress_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CustomersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_StateProvince">
+          <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Costs_CostCategory">
+          <End Role="CostCategory" Type="Self.CostCategory" Multiplicity="1" />
+          <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Costs">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Costs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Costs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Competent">
+          <End Role="Competent" Type="Self.Competent" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerCategory">
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_InvoiceCategory">
+          <End Role="InvoiceCategory" Type="Self.InvoiceCategory" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="InvoiceCategory" Type="Self.InvoiceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLine_Invoice">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLine_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLineTaxes_InvoiceLine">
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="1" />
+          <End Role="InvoiceLineTaxes" Type="Self.InvoiceLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceLine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLineTaxes">
+              <PropertyRef Name="InvoiceLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLineTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="InvoiceLineTaxes" Type="Self.InvoiceLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLineTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineTaxes_OrderLine">
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="1" />
+          <End Role="OrderLineTaxes" Type="Self.OrderLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderLine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLineTaxes">
+              <PropertyRef Name="OrderLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="OrderLineTaxes" Type="Self.OrderLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLineTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductTaxes_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductTaxes" Type="Self.ProductTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductTaxes">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="ProductTaxes" Type="Self.ProductTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVaryant_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductVaryant" Type="Self.ProductVaryant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductVaryant">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVaryant_Varyant">
+          <End Role="Varyant" Type="Self.Varyant" Multiplicity="1" />
+          <End Role="ProductVaryant" Type="Self.ProductVaryant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varyant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductVaryant">
+              <PropertyRef Name="VaryantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Safe_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Safe" Type="Self.Safe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Safe">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SafeAction_Safe">
+          <End Role="Safe" Type="Self.Safe" Multiplicity="1" />
+          <End Role="SafeAction" Type="Self.SafeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Safe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SafeAction">
+              <PropertyRef Name="SafeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SafeAction_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SafeAction" Type="Self.SafeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SafeAction">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubUsers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SubUsers" Type="Self.SubUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUsers">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StateProvince_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateProvince">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PranomiGuncelModelStoreContainer">
+          <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competent" EntityType="Self.Competent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostCategory" EntityType="Self.CostCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Costs" EntityType="Self.Costs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditCardPay" EntityType="Self.CreditCardPay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerCategory" EntityType="Self.CustomerCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceCategory" EntityType="Self.InvoiceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceLine" EntityType="Self.InvoiceLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceLineTaxes" EntityType="Self.InvoiceLineTaxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderLineTaxes" EntityType="Self.OrderLineTaxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTaxes" EntityType="Self.ProductTaxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductVaryant" EntityType="Self.ProductVaryant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Safe" EntityType="Self.Safe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SafeAction" EntityType="Self.SafeAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateProvince" EntityType="Self.StateProvince" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubUsers" EntityType="Self.SubUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxes" EntityType="Self.Taxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Varyant" EntityType="Self.Varyant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adress_Country" Association="Self.FK_Adress_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Customers" Association="Self.FK_Adress_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_StateProvince" Association="Self.FK_Adress_StateProvince">
+            <End Role="StateProvince" EntitySet="StateProvince" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Costs_CostCategory" Association="Self.FK_Costs_CostCategory">
+            <End Role="CostCategory" EntitySet="CostCategory" />
+            <End Role="Costs" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Costs_Users" Association="Self.FK_Costs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Costs" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCategory_Users" Association="Self.FK_CustomerCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CustomerCategory" EntitySet="CustomerCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Competent" Association="Self.FK_Customers_Competent">
+            <End Role="Competent" EntitySet="Competent" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerCategory" Association="Self.FK_Customers_CustomerCategory">
+            <End Role="CustomerCategory" EntitySet="CustomerCategory" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Customers" Association="Self.FK_Invoice_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_InvoiceCategory" Association="Self.FK_Invoice_InvoiceCategory">
+            <End Role="InvoiceCategory" EntitySet="InvoiceCategory" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Users" Association="Self.FK_Invoice_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceCategory_Users" Association="Self.FK_InvoiceCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="InvoiceCategory" EntitySet="InvoiceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLine_Invoice" Association="Self.FK_InvoiceLine_Invoice">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLine_Products" Association="Self.FK_InvoiceLine_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLineTaxes_InvoiceLine" Association="Self.FK_InvoiceLineTaxes_InvoiceLine">
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+            <End Role="InvoiceLineTaxes" EntitySet="InvoiceLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLineTaxes_Taxes" Association="Self.FK_InvoiceLineTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="InvoiceLineTaxes" EntitySet="InvoiceLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Products" Association="Self.FK_OrderLine_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineTaxes_OrderLine" Association="Self.FK_OrderLineTaxes_OrderLine">
+            <End Role="OrderLine" EntitySet="OrderLine" />
+            <End Role="OrderLineTaxes" EntitySet="OrderLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineTaxes_Taxes" Association="Self.FK_OrderLineTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="OrderLineTaxes" EntitySet="OrderLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategory_Users" Association="Self.FK_ProductCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Currency" Association="Self.FK_Products_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Users" Association="Self.FK_Products_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductTaxes_Products" Association="Self.FK_ProductTaxes_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductTaxes" EntitySet="ProductTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductTaxes_Taxes" Association="Self.FK_ProductTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="ProductTaxes" EntitySet="ProductTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVaryant_Products" Association="Self.FK_ProductVaryant_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductVaryant" EntitySet="ProductVaryant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVaryant_Varyant" Association="Self.FK_ProductVaryant_Varyant">
+            <End Role="Varyant" EntitySet="Varyant" />
+            <End Role="ProductVaryant" EntitySet="ProductVaryant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Safe_Currency" Association="Self.FK_Safe_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Safe" EntitySet="Safe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SafeAction_Safe" Association="Self.FK_SafeAction_Safe">
+            <End Role="Safe" EntitySet="Safe" />
+            <End Role="SafeAction" EntitySet="SafeAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SafeAction_Users" Association="Self.FK_SafeAction_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SafeAction" EntitySet="SafeAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubUsers_Users" Association="Self.FK_SubUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SubUsers" EntitySet="SubUsers" />
+          </AssociationSet>
+          <AssociationSet Name="StateProvince_Country" Association="Self.StateProvince_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="StateProvince" EntitySet="StateProvince" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PranomiGuncelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdressLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="CustomersID" Type="Int32" Nullable="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Adress_Country" FromRole="Adress" ToRole="Country" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Adress_Customers" FromRole="Adress" ToRole="Customers" />
+          <NavigationProperty Name="StateProvince" Relationship="Self.FK_Adress_StateProvince" FromRole="Adress" ToRole="StateProvince" />
+        </EntityType>
+        <EntityType Name="Competent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomersID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Competent" FromRole="Competent" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CostCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Costs" Relationship="Self.FK_Costs_CostCategory" FromRole="CostCategory" ToRole="Costs" />
+        </EntityType>
+        <EntityType Name="Costs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceExVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PriceInVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsPay" Type="Boolean" Nullable="false" />
+          <Property Name="ExpryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="CostCategory" Relationship="Self.FK_Costs_CostCategory" FromRole="Costs" ToRole="CostCategory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Costs_Users" FromRole="Costs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AllowsBilling" Type="Boolean" Nullable="false" />
+          <Property Name="AllowsShipping" Type="Boolean" Nullable="false" />
+          <Property Name="TwoLetterIsoCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeLetterIsoCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NumericIsoCode" Type="Int32" Nullable="false" />
+          <Property Name="SubjectToVat" Type="Boolean" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Country" FromRole="Country" ToRole="Adress" />
+          <NavigationProperty Name="StateProvince" Relationship="Self.StateProvince_Country" FromRole="Country" ToRole="StateProvince" />
+        </EntityType>
+        <EntityType Name="CreditCardPay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kind" Type="Int32" Nullable="false" />
+          <Property Name="TotalInstallment" Type="Int32" Nullable="false" />
+          <Property Name="CurrentInstallment" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DocumentID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Symbol" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Currency" FromRole="Currency" ToRole="Products" />
+          <NavigationProperty Name="Safe" Relationship="Self.FK_Safe_Currency" FromRole="Currency" ToRole="Safe" />
+        </EntityType>
+        <EntityType Name="CustomerCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_CustomerCategory_Users" FromRole="CustomerCategory" ToRole="Users" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerCategory" FromRole="CustomerCategory" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Code" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsCompany" Type="Boolean" Nullable="false" />
+          <Property Name="TaxState" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="TaxNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsCustomer" Type="Boolean" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="80" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="Iban" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Customers" FromRole="Customers" ToRole="Adress" />
+          <NavigationProperty Name="Competent" Relationship="Self.FK_Customers_Competent" FromRole="Customers" ToRole="Competent" />
+          <NavigationProperty Name="CustomerCategory" Relationship="Self.FK_Customers_CustomerCategory" FromRole="Customers" ToRole="CustomerCategory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Customers_Users" FromRole="Customers" ToRole="Users" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_Customers" FromRole="Customers" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrencyName" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyValue" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TaxTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PayTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsPay" Type="Boolean" Nullable="false" />
+          <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvoiceKind" Type="Int32" Nullable="false" />
+          <Property Name="PayKind" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="categoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Invoice_Customers" FromRole="Invoice" ToRole="Customers" />
+          <NavigationProperty Name="InvoiceCategory" Relationship="Self.FK_Invoice_InvoiceCategory" FromRole="Invoice" ToRole="InvoiceCategory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Invoice_Users" FromRole="Invoice" ToRole="Users" />
+          <NavigationProperty Name="InvoiceLine" Relationship="Self.FK_InvoiceLine_Invoice" FromRole="Invoice" ToRole="InvoiceLine" />
+        </EntityType>
+        <EntityType Name="InvoiceCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_InvoiceCategory" FromRole="InvoiceCategory" ToRole="Invoice" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_InvoiceCategory_Users" FromRole="InvoiceCategory" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="InvoiceLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_InvoiceLine_Invoice" FromRole="InvoiceLine" ToRole="Invoice" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_InvoiceLine_Products" FromRole="InvoiceLine" ToRole="Products" />
+          <NavigationProperty Name="InvoiceLineTaxes" Relationship="Self.FK_InvoiceLineTaxes_InvoiceLine" FromRole="InvoiceLine" ToRole="InvoiceLineTaxes" />
+        </EntityType>
+        <EntityType Name="InvoiceLineTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxesID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceLineID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="InvoiceLine" Relationship="Self.FK_InvoiceLineTaxes_InvoiceLine" FromRole="InvoiceLineTaxes" ToRole="InvoiceLine" />
+          <NavigationProperty Name="Taxes" Relationship="Self.FK_InvoiceLineTaxes_Taxes" FromRole="InvoiceLineTaxes" ToRole="Taxes" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrencyName" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyValue" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FileUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TaxTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Order_Users" FromRole="Order" ToRole="Users" />
+          <NavigationProperty Name="OrderLine" Relationship="Self.FK_OrderLine_Order" FromRole="Order" ToRole="OrderLine" />
+        </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderLine_Order" FromRole="OrderLine" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_OrderLine_Products" FromRole="OrderLine" ToRole="Products" />
+          <NavigationProperty Name="OrderLineTaxes" Relationship="Self.FK_OrderLineTaxes_OrderLine" FromRole="OrderLine" ToRole="OrderLineTaxes" />
+        </EntityType>
+        <EntityType Name="OrderLineTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxesID" Type="Int32" Nullable="false" />
+          <Property Name="OrderLineID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OrderLine" Relationship="Self.FK_OrderLineTaxes_OrderLine" FromRole="OrderLineTaxes" ToRole="OrderLine" />
+          <NavigationProperty Name="Taxes" Relationship="Self.FK_OrderLineTaxes_Taxes" FromRole="OrderLineTaxes" ToRole="Taxes" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_ProductCategory_Users" FromRole="ProductCategory" ToRole="Users" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductCategory" FromRole="ProductCategory" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SKU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsVirtual" Type="Boolean" Nullable="false" />
+          <Property Name="Stock" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="PurPriceExVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PurPriceInVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalPriceExVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalPriceInVat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Products_Currency" FromRole="Products" ToRole="Currency" />
+          <NavigationProperty Name="InvoiceLine" Relationship="Self.FK_InvoiceLine_Products" FromRole="Products" ToRole="InvoiceLine" />
+          <NavigationProperty Name="OrderLine" Relationship="Self.FK_OrderLine_Products" FromRole="Products" ToRole="OrderLine" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategory" FromRole="Products" ToRole="ProductCategory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Products_Users" FromRole="Products" ToRole="Users" />
+          <NavigationProperty Name="ProductTaxes" Relationship="Self.FK_ProductTaxes_Products" FromRole="Products" ToRole="ProductTaxes" />
+          <NavigationProperty Name="ProductVaryant" Relationship="Self.FK_ProductVaryant_Products" FromRole="Products" ToRole="ProductVaryant" />
+        </EntityType>
+        <EntityType Name="ProductTaxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="TaxesID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <Property Name="Kind" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ProductTaxes_Products" FromRole="ProductTaxes" ToRole="Products" />
+          <NavigationProperty Name="Taxes" Relationship="Self.FK_ProductTaxes_Taxes" FromRole="ProductTaxes" ToRole="Taxes" />
+        </EntityType>
+        <EntityType Name="ProductVaryant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="VaryantID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ProductVaryant_Products" FromRole="ProductVaryant" ToRole="Products" />
+          <NavigationProperty Name="Varyant" Relationship="Self.FK_ProductVaryant_Varyant" FromRole="ProductVaryant" ToRole="Varyant" />
+        </EntityType>
+        <EntityType Name="Safe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FirsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Safe_Currency" FromRole="Safe" ToRole="Currency" />
+          <NavigationProperty Name="SafeAction" Relationship="Self.FK_SafeAction_Safe" FromRole="Safe" ToRole="SafeAction" />
+        </EntityType>
+        <EntityType Name="SafeAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActionKind" Type="Int32" Nullable="false" />
+          <Property Name="KindID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LastBalance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SafeID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Safe" Relationship="Self.FK_SafeAction_Safe" FromRole="SafeAction" ToRole="Safe" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_SafeAction_Users" FromRole="SafeAction" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="StateProvince">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_StateProvince" FromRole="StateProvince" ToRole="Adress" />
+          <NavigationProperty Name="Country" Relationship="Self.StateProvince_Country" FromRole="StateProvince" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="SubUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="UsersID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_SubUsers_Users" FromRole="SubUsers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Taxes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InvoiceLineTaxes" Relationship="Self.FK_InvoiceLineTaxes_Taxes" FromRole="Taxes" ToRole="InvoiceLineTaxes" />
+          <NavigationProperty Name="OrderLineTaxes" Relationship="Self.FK_OrderLineTaxes_Taxes" FromRole="Taxes" ToRole="OrderLineTaxes" />
+          <NavigationProperty Name="ProductTaxes" Relationship="Self.FK_ProductTaxes_Taxes" FromRole="Taxes" ToRole="ProductTaxes" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="SubUserCount" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDemo" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Costs" Relationship="Self.FK_Costs_Users" FromRole="Users" ToRole="Costs" />
+          <NavigationProperty Name="CustomerCategory" Relationship="Self.FK_CustomerCategory_Users" FromRole="Users" ToRole="CustomerCategory" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Users" FromRole="Users" ToRole="Customers" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_Users" FromRole="Users" ToRole="Invoice" />
+          <NavigationProperty Name="InvoiceCategory" Relationship="Self.FK_InvoiceCategory_Users" FromRole="Users" ToRole="InvoiceCategory" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Users" FromRole="Users" ToRole="Order" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_ProductCategory_Users" FromRole="Users" ToRole="ProductCategory" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Users" FromRole="Users" ToRole="Products" />
+          <NavigationProperty Name="SafeAction" Relationship="Self.FK_SafeAction_Users" FromRole="Users" ToRole="SafeAction" />
+          <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Users" FromRole="Users" ToRole="SubUsers" />
+        </EntityType>
+        <EntityType Name="Varyant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProductVaryant" Relationship="Self.FK_ProductVaryant_Varyant" FromRole="Varyant" ToRole="ProductVaryant" />
+        </EntityType>
+        <Association Name="FK_Adress_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CustomersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_StateProvince">
+          <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Competent">
+          <End Role="Competent" Type="Self.Competent" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Costs_CostCategory">
+          <End Role="CostCategory" Type="Self.CostCategory" Multiplicity="1" />
+          <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Costs">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Costs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Costs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StateProvince_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StateProvince">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Safe_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Safe" Type="Self.Safe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Safe">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerCategory">
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_InvoiceCategory">
+          <End Role="InvoiceCategory" Type="Self.InvoiceCategory" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLine_Invoice">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="InvoiceCategory" Type="Self.InvoiceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLine_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLineTaxes_InvoiceLine">
+          <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="1" />
+          <End Role="InvoiceLineTaxes" Type="Self.InvoiceLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceLine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLineTaxes">
+              <PropertyRef Name="InvoiceLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceLineTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="InvoiceLineTaxes" Type="Self.InvoiceLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvoiceLineTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLine_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineTaxes_OrderLine">
+          <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="1" />
+          <End Role="OrderLineTaxes" Type="Self.OrderLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderLine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLineTaxes">
+              <PropertyRef Name="OrderLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="OrderLineTaxes" Type="Self.OrderLineTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderLineTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductTaxes_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductTaxes" Type="Self.ProductTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductTaxes">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVaryant_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductVaryant" Type="Self.ProductVaryant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductVaryant">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductTaxes_Taxes">
+          <End Role="Taxes" Type="Self.Taxes" Multiplicity="1" />
+          <End Role="ProductTaxes" Type="Self.ProductTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductTaxes">
+              <PropertyRef Name="TaxesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVaryant_Varyant">
+          <End Role="Varyant" Type="Self.Varyant" Multiplicity="1" />
+          <End Role="ProductVaryant" Type="Self.ProductVaryant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varyant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductVaryant">
+              <PropertyRef Name="VaryantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SafeAction_Safe">
+          <End Role="Safe" Type="Self.Safe" Multiplicity="1" />
+          <End Role="SafeAction" Type="Self.SafeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Safe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SafeAction">
+              <PropertyRef Name="SafeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SafeAction_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SafeAction" Type="Self.SafeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SafeAction">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubUsers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SubUsers" Type="Self.SubUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubUsers">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PranomiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress" EntityType="Self.Adress" />
+          <EntitySet Name="Competent" EntityType="Self.Competent" />
+          <EntitySet Name="CostCategory" EntityType="Self.CostCategory" />
+          <EntitySet Name="Costs" EntityType="Self.Costs" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="CreditCardPay" EntityType="Self.CreditCardPay" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" />
+          <EntitySet Name="CustomerCategory" EntityType="Self.CustomerCategory" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" />
+          <EntitySet Name="InvoiceCategory" EntityType="Self.InvoiceCategory" />
+          <EntitySet Name="InvoiceLine" EntityType="Self.InvoiceLine" />
+          <EntitySet Name="InvoiceLineTaxes" EntityType="Self.InvoiceLineTaxes" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderLine" EntityType="Self.OrderLine" />
+          <EntitySet Name="OrderLineTaxes" EntityType="Self.OrderLineTaxes" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="ProductTaxes" EntityType="Self.ProductTaxes" />
+          <EntitySet Name="ProductVaryant" EntityType="Self.ProductVaryant" />
+          <EntitySet Name="Safe" EntityType="Self.Safe" />
+          <EntitySet Name="SafeAction" EntityType="Self.SafeAction" />
+          <EntitySet Name="StateProvince" EntityType="Self.StateProvince" />
+          <EntitySet Name="SubUsers" EntityType="Self.SubUsers" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Taxes" EntityType="Self.Taxes" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Varyant" EntityType="Self.Varyant" />
+          <AssociationSet Name="FK_Adress_Country" Association="Self.FK_Adress_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Customers" Association="Self.FK_Adress_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_StateProvince" Association="Self.FK_Adress_StateProvince">
+            <End Role="StateProvince" EntitySet="StateProvince" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Competent" Association="Self.FK_Customers_Competent">
+            <End Role="Competent" EntitySet="Competent" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Costs_CostCategory" Association="Self.FK_Costs_CostCategory">
+            <End Role="CostCategory" EntitySet="CostCategory" />
+            <End Role="Costs" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Costs_Users" Association="Self.FK_Costs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Costs" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="StateProvince_Country" Association="Self.StateProvince_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="StateProvince" EntitySet="StateProvince" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Currency" Association="Self.FK_Products_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Safe_Currency" Association="Self.FK_Safe_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Safe" EntitySet="Safe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCategory_Users" Association="Self.FK_CustomerCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CustomerCategory" EntitySet="CustomerCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerCategory" Association="Self.FK_Customers_CustomerCategory">
+            <End Role="CustomerCategory" EntitySet="CustomerCategory" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Customers" Association="Self.FK_Invoice_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_InvoiceCategory" Association="Self.FK_Invoice_InvoiceCategory">
+            <End Role="InvoiceCategory" EntitySet="InvoiceCategory" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Users" Association="Self.FK_Invoice_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLine_Invoice" Association="Self.FK_InvoiceLine_Invoice">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceCategory_Users" Association="Self.FK_InvoiceCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="InvoiceCategory" EntitySet="InvoiceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLine_Products" Association="Self.FK_InvoiceLine_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLineTaxes_InvoiceLine" Association="Self.FK_InvoiceLineTaxes_InvoiceLine">
+            <End Role="InvoiceLine" EntitySet="InvoiceLine" />
+            <End Role="InvoiceLineTaxes" EntitySet="InvoiceLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLineTaxes_Taxes" Association="Self.FK_InvoiceLineTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="InvoiceLineTaxes" EntitySet="InvoiceLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLine_Products" Association="Self.FK_OrderLine_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderLine" EntitySet="OrderLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineTaxes_OrderLine" Association="Self.FK_OrderLineTaxes_OrderLine">
+            <End Role="OrderLine" EntitySet="OrderLine" />
+            <End Role="OrderLineTaxes" EntitySet="OrderLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineTaxes_Taxes" Association="Self.FK_OrderLineTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="OrderLineTaxes" EntitySet="OrderLineTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategory_Users" Association="Self.FK_ProductCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Users" Association="Self.FK_Products_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductTaxes_Products" Association="Self.FK_ProductTaxes_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductTaxes" EntitySet="ProductTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVaryant_Products" Association="Self.FK_ProductVaryant_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductVaryant" EntitySet="ProductVaryant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductTaxes_Taxes" Association="Self.FK_ProductTaxes_Taxes">
+            <End Role="Taxes" EntitySet="Taxes" />
+            <End Role="ProductTaxes" EntitySet="ProductTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVaryant_Varyant" Association="Self.FK_ProductVaryant_Varyant">
+            <End Role="Varyant" EntitySet="Varyant" />
+            <End Role="ProductVaryant" EntitySet="ProductVaryant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SafeAction_Safe" Association="Self.FK_SafeAction_Safe">
+            <End Role="Safe" EntitySet="Safe" />
+            <End Role="SafeAction" EntitySet="SafeAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SafeAction_Users" Association="Self.FK_SafeAction_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SafeAction" EntitySet="SafeAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubUsers_Users" Association="Self.FK_SubUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SubUsers" EntitySet="SubUsers" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PranomiGuncelModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PranomiGuncelModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PranomiGuncelModelStoreContainer" CdmEntityContainer="PranomiEntities">
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AdressLine" ColumnName="AdressLine" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CustomersID" ColumnName="CustomersID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competent">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Competent">
+              <MappingFragment StoreEntitySet="Competent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomersID" ColumnName="CustomersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CostCategory">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.CostCategory">
+              <MappingFragment StoreEntitySet="CostCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Costs">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Costs">
+              <MappingFragment StoreEntitySet="Costs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CostDate" ColumnName="CostDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PriceExVat" ColumnName="PriceExVat" />
+                <ScalarProperty Name="PriceInVat" ColumnName="PriceInVat" />
+                <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+                <ScalarProperty Name="ExpryDate" ColumnName="ExpryDate" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AllowsBilling" ColumnName="AllowsBilling" />
+                <ScalarProperty Name="AllowsShipping" ColumnName="AllowsShipping" />
+                <ScalarProperty Name="TwoLetterIsoCode" ColumnName="TwoLetterIsoCode" />
+                <ScalarProperty Name="ThreeLetterIsoCode" ColumnName="ThreeLetterIsoCode" />
+                <ScalarProperty Name="NumericIsoCode" ColumnName="NumericIsoCode" />
+                <ScalarProperty Name="SubjectToVat" ColumnName="SubjectToVat" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditCardPay">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.CreditCardPay">
+              <MappingFragment StoreEntitySet="CreditCardPay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="TotalInstallment" ColumnName="TotalInstallment" />
+                <ScalarProperty Name="CurrentInstallment" ColumnName="CurrentInstallment" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerCategory">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.CustomerCategory">
+              <MappingFragment StoreEntitySet="CustomerCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="IsCompany" ColumnName="IsCompany" />
+                <ScalarProperty Name="TaxState" ColumnName="TaxState" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="IsCustomer" ColumnName="IsCustomer" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Iban" ColumnName="Iban" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyValue" ColumnName="CurrencyValue" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxTotal" ColumnName="TaxTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PayTotal" ColumnName="PayTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="InvoiceKind" ColumnName="InvoiceKind" />
+                <ScalarProperty Name="PayKind" ColumnName="PayKind" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceCategory">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.InvoiceCategory">
+              <MappingFragment StoreEntitySet="InvoiceCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceLine">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.InvoiceLine">
+              <MappingFragment StoreEntitySet="InvoiceLine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceLineTaxes">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.InvoiceLineTaxes">
+              <MappingFragment StoreEntitySet="InvoiceLineTaxes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TaxesID" ColumnName="TaxesID" />
+                <ScalarProperty Name="InvoiceLineID" ColumnName="InvoiceLineID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyValue" ColumnName="CurrencyValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxTotal" ColumnName="TaxTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLine">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.OrderLine">
+              <MappingFragment StoreEntitySet="OrderLine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLineTaxes">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.OrderLineTaxes">
+              <MappingFragment StoreEntitySet="OrderLineTaxes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TaxesID" ColumnName="TaxesID" />
+                <ScalarProperty Name="OrderLineID" ColumnName="OrderLineID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategory">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVirtual" ColumnName="IsVirtual" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="PurPriceExVat" ColumnName="PurPriceExVat" />
+                <ScalarProperty Name="PurPriceInVat" ColumnName="PurPriceInVat" />
+                <ScalarProperty Name="SalPriceExVat" ColumnName="SalPriceExVat" />
+                <ScalarProperty Name="SalPriceInVat" ColumnName="SalPriceInVat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTaxes">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.ProductTaxes">
+              <MappingFragment StoreEntitySet="ProductTaxes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TaxesID" ColumnName="TaxesID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVaryant">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.ProductVaryant">
+              <MappingFragment StoreEntitySet="ProductVaryant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="VaryantID" ColumnName="VaryantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Safe">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Safe">
+              <MappingFragment StoreEntitySet="Safe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FirsDate" ColumnName="FirsDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SafeAction">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.SafeAction">
+              <MappingFragment StoreEntitySet="SafeAction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ActionKind" ColumnName="ActionKind" />
+                <ScalarProperty Name="KindID" ColumnName="KindID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LastBalance" ColumnName="LastBalance" />
+                <ScalarProperty Name="SafeID" ColumnName="SafeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateProvince">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.StateProvince">
+              <MappingFragment StoreEntitySet="StateProvince">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubUsers">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.SubUsers">
+              <MappingFragment StoreEntitySet="SubUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Taxes">
+              <MappingFragment StoreEntitySet="Taxes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SubUserCount" ColumnName="SubUserCount" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDemo" ColumnName="IsDemo" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Varyant">
+            <EntityTypeMapping TypeName="PranomiGuncelModel.Varyant">
+              <MappingFragment StoreEntitySet="Varyant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PranomiGuncelModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PranomiGuncelModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PranomiGuncelModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PranomiGuncelModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PranomiGuncelModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PranomiGuncelModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PranomiGuncelModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PranomiGuncelModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PranomiGuncelModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,259 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/App/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header content-center">
+        <h1>
+            Yeni Ürün / Hizmet
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content content-center">
+
+        <!-- Default box -->
+        <div class="box box-success">
+            <form method="POST" action="http://localhost/common/items" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
+                <input name="_token" type="hidden" value="0VM3bOTN0IyJXc70wNZaRB52UIpOEal5EWNSrG6m">
+
+                <div class="box-body">
+                    <div class="form-group col-md-6 required ">
+                        <label for="name" class="control-label">İsim</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-id-card-o"></i></div>
+                            <input class="form-control" placeholder="İsim Girin" required="required" name="name" type="text" id="name">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 required ">
+                        <label for="sku" class="control-label">&Uuml;r&uuml;n Kodu</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                            <input class="form-control" placeholder="Ürün Kodu Girin" required="required" name="sku" type="text" id="sku">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-12  ">
+                        <label for="description" class="control-label">A&ccedil;ıklama</label>
+                        <textarea class="form-control" placeholder="Açıklama Girin" rows="3" name="description" cols="50" id="description"></textarea>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 required ">
+                        <label for="sale_price" class="control-label">Satış Fiyatı</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                            <input class="form-control" placeholder="Satış Fiyatı Girin" required="required" name="sale_price" type="text" id="sale_price">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 required ">
+                        <label for="purchase_price" class="control-label">Alış Fiyatı</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                            <input class="form-control" placeholder="Alış Fiyatı Girin" required="required" name="purchase_price" type="text" id="purchase_price">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 required ">
+                        <label for="quantity" class="control-label">Adet</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-cubes"></i></div>
+                            <input class="form-control" placeholder="Adet Girin" required="required" name="quantity" type="text" value="1" id="quantity">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6  ">
+                        <label for="tax_id" class="control-label">Vergi Oranı</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-percent"></i></div>
+                            <select class="form-control" id="tax_id" name="tax_id"><option selected="selected" value="">- Vergi Oranı Seçin -</option><option value="1">Vergi Muaf (0%)</option><option value="2">Normal Vergi (5%)</option><option value="3">Satış Vergisi (15%)</option></select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6 required ">
+                        <label for="category_id" class="control-label">Kategori</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-folder-open-o"></i></div>
+                            <select class="form-control" id="category_id" name="category_id"><option selected="selected" value="">- Kategori Seçin -</option><option value="5">Genel</option></select>
+                            <div class="input-group-btn">
+                                <button type="button" onclick="createCategory();" class="btn btn-default btn-icon"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-6  " style="min-height: 59px">
+                        <label for="picture" class="control-label">Resim</label>
+                        <input class="form-control" name="picture" type="file" id="picture">
+
+                    </div>
+
+
+                    <div class="form-group col-md-6  ">
+                        <label for="enabled" class="control-label">Etkin</label>
+                        <div class="input-group">
+                            <div class="btn-group radio-inline" data-toggle="buttons">
+                                <label id="enabled_1" class="btn btn-default">
+                                    <input name="enabled" type="radio" value="1" id="enabled">
+                                    <span class="radiotext">Evet</span>
+                                </label>
+                                <label id="enabled_0" class="btn btn-default">
+                                    <input checked="checked" name="enabled" type="radio" value="0" id="enabled">
+                                    <span class="radiotext">Hayır</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> &nbsp;Kaydet</button>
+                            <a href="http://localhost/common/items" class="btn btn-default"><span class="fa fa-times-circle"></span> &nbsp;İptal</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-footer -->
+
+            </form>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+
+
+
+<script type="text/javascript">
+    var text_yes = 'Evet';
+    var text_no = 'Hayır';
+
+    $(document).ready(function () {
+        $('#enabled_1').trigger('click');
+
+        $('#name').focus();
+
+        $("#tax_id").select2({
+            placeholder: "- Vergi Oranı Seçin -"
+        });
+
+        $("#category_id").select2({
+            placeholder: "- Kategori Seçin -"
+        });
+
+        $('#picture').fancyfile({
+            text: 'Dosya Seçin',
+            style: 'btn-default',
+            placeholder: 'Dosya seçilmemiş...'
+        });
+    });
+
+    function createCategory() {
+        $('#modal-create-category').remove();
+
+        modal = '<div class="modal fade" id="modal-create-category" style="display: none;">';
+        modal += '  <div class="modal-dialog  modal-lg">';
+        modal += '      <div class="modal-content">';
+        modal += '          <div class="modal-header">';
+        modal += '              <h4 class="modal-title">Yeni Kategori</h4>';
+        modal += '          </div>';
+        modal += '          <div class="modal-body">';
+        modal += '              <form method="POST" action="http://localhost/common/items/create" accept-charset="UTF-8" id="form-create-category" role="form"><input name="_token" type="hidden" value="0VM3bOTN0IyJXc70wNZaRB52UIpOEal5EWNSrG6m">';
+        modal += '              <div class="row">';
+        modal += '                  <div class="form-group col-md-6 required">';
+        modal += '                      <label for="name" class="control-label">İsim</label>';
+        modal += '                      <div class="input-group">';
+        modal += '                          <div class="input-group-addon"><i class="fa fa-id-card-o"></i></div>';
+        modal += '                          <input class="form-control" placeholder="İsim" required="required" name="name" type="text" id="name">';
+        modal += '                      </div>';
+        modal += '                  </div>';
+        modal += '                  <div class="form-group col-md-6 required">';
+        modal += '                      <label for="color" class="control-label">Renk</label>';
+        modal += '                      <div  id="category-color-picker" class="input-group colorpicker-component">';
+        modal += '                          <div class="input-group-addon"><i></i></div>';
+        modal += '                          <input class="form-control" value="#00a65a" placeholder="Renk" required="required" name="color" type="text" id="color">';
+        modal += '                      </div>';
+        modal += '                  </div>';
+        modal += '                  <input name="type" type="hidden" value="item">';
+        modal += '                  <input name="enabled" type="hidden" value="1">';
+        modal += '              </div>';
+        modal += '              </form>';
+        modal += '          </div>';
+        modal += '          <div class="modal-footer">';
+        modal += '              <div class="pull-left">';
+        modal += '              <button type="button" id="button-create-category" class="btn btn-success"><span class="fa fa-save"></span> &nbsp;Kaydet</button>';
+        modal += '              <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-times-circle"></span> &nbsp;İptal</button>';
+        modal += '              </div>';
+        modal += '          </div>';
+        modal += '      </div>';
+        modal += '  </div>';
+        modal += '</div>';
+
+        $('body').append(modal);
+
+        $('#category-color-picker').colorpicker();
+
+        $('#modal-create-category').modal('show');
+    }
+
+    $(document).on('click', '#button-create-category', function (e) {
+        $('#modal-create-category .modal-header').before('<span id="span-loading" style="position: absolute; height: 100%; width: 100%; z-index: 99; background: #6da252; opacity: 0.4;"><i class="fa fa-spinner fa-spin" style="font-size: 10em !important;margin-left: 35%;margin-top: 8%;"></i></span>');
+
+        $.ajax({
+            url: 'http://localhost/settings/categories/category',
+            type: 'POST',
+            dataType: 'JSON',
+            data: $("#form-create-category").serialize(),
+            beforeSend: function () {
+                $(".form-group").removeClass("has-error");
+                $(".help-block").remove();
+            },
+            success: function (data) {
+                $('#span-loading').remove();
+
+                $('#modal-create-category').modal('hide');
+
+                $("#category_id").append('<option value="' + data.id + '" selected="selected">' + data.name + '</option>');
+                $("#category_id").select2('refresh');
+            },
+            error: function (error, textStatus, errorThrown) {
+                $('#span-loading').remove();
+
+                if (error.responseJSON.name) {
+                    $("input[name='name']").parent().parent().addClass('has-error');
+                    $("input[name='name']").parent().after('<p class="help-block">' + error.responseJSON.name + '</p>');
+                }
+
+                if (error.responseJSON.color) {
+                    $("input[name='color']").parent().parent().addClass('has-error');
+                    $("input[name='color']").parent().after('<p class="help-block">' + error.responseJSON.color + '</p>');
+                }
+            }
+        });
+    });
+</script>
